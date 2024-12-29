@@ -1,22 +1,30 @@
-// eslint.config.js
-module.exports = {
-    extends: [
-      'eslint:recommended', // Enable recommended rules from ESLint
-      'plugin:node/recommended', // Node.js-specific linting rules
-    ],
-    parserOptions: {
-      ecmaVersion: 2020, // Supports ES2020 features like optional chaining
-      sourceType: 'module', // For using ECMAScript modules (import/export)
+import { defineConfig } from 'eslint';
+
+export default defineConfig({
+  overrides: [
+    {
+      files: ['**/*.js', '**/*.ts'], // Adjust based on your file types
+      parserOptions: {
+        ecmaVersion: 2020,
+        sourceType: 'module',
+      },
+      env: {
+        node: true,
+        es6: true,
+      },
+      rules: {
+        'no-console': 'warn',
+        'no-unused-vars': 'warn',
+        'node/no-missing-require': 'error',
+        'node/no-unpublished-require': 'error',
+      },
     },
-    env: {
-      node: true, // Recognizes Node.js global variables and Node-specific rules
-      es6: true, // Supports ES6 syntax
-    },
-    rules: {
-      'no-console': 'warn', // Warns when using `console.log`
-      'no-unused-vars': 'warn', // Warns when a variable is declared but not used
-      'node/no-missing-require': 'error', // Ensures required modules are correctly imported
-      'node/no-unpublished-require': 'error', // Ensures unpublished modules are not required
-    },
-  };
-  
+  ],
+  // Directly include config objects you want to extend
+  plugins: [
+    'node', // Add your plugins here
+  ],
+  settings: {
+    // Optional: Add any settings if necessary
+  },
+});
