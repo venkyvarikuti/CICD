@@ -20,5 +20,8 @@
   "homepage": "https://github.com/venkyvarikuti/CICD#readme",
   "dependencies": {
     "express": "^4.21.2"
+  },
+  "devDependencies": {
+    "eslint": "^9.17.0"
   }
 }
